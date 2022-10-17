@@ -1,0 +1,23 @@
+﻿
+<h1>Inscription validé !</h1>
+<p>Merci @TempData["Name"] 🐱‍💻</p>
+
+
+@* Lien vers la page « Home » en HTML Helper *@
+@Html.ActionLink("Retourner à la page d'accueil", "Index", "Home", null, new { @class = "btn btn-warning"} )
+
+<br />
+
+@* Lien vers la page « Home » en Tag Helper *@
+<a class="btn btn-danger" asp-controller="Home" asp-action="Index">Retourner à la page d'accueil</a>
+
+
+@************************************************************************************************************@
+
+@{
+    string test = "<h2>Test</h2>";
+}
+
+@Html.Raw(test) @* → Sera injecté dans l'html*@
+@test  @* → Donne dans le HTML : &lt;h2&gt;Test&lt;/h2&gt; *@
+

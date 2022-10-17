@@ -1,0 +1,58 @@
+﻿@model InscriptionDataViewModel
+
+<h1>Formulaire d'inscription 🍔</h1>
+
+<form method="post" asp-antiforgery="true">
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Firstname"></label>
+        <input asp-for="Firstname" class="form-control" placeholder="John" />
+        <span asp-validation-for="Firstname" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Lastname"></label>
+        <input asp-for="Lastname" class="form-control" placeholder="Smith" />
+        <span asp-validation-for="Lastname" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div>
+        @{
+            var selectListItems = (IEnumerable<SelectListItem>)ViewData["PersonRoles"];
+        }
+
+        <label asp-for="PersonRoleId"></label>
+        <select asp-for="PersonRoleId" asp-items="selectListItems" class="form-select">
+            <option value="" selected disabled>--- Veuillez selectionner un role ---</option>
+        </select>
+        <span asp-validation-for="PersonRoleId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="NbGuest"></label>
+        <input asp-for="NbGuest" class="form-control" />
+        <span asp-validation-for="NbGuest" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="SpamOk"></label>
+        <input asp-for="SpamOk" class="form-check-input" />
+        <span asp-validation-for="SpamOk" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button type="submit">Envoyer le formulaire</button>
+    </div>
+</form>

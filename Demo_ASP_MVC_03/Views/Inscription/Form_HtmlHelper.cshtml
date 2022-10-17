@@ -1,0 +1,62 @@
+﻿@model InscriptionDataViewModel
+
+<h1>Formulaire d'inscription 🍔</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(model => model.Email)
+        @*
+        @Html.TextBox("Email", null, new { @class = "form-control"})
+        @Html.TextBoxFor(model => model.Email, null, new { @class = "form-control", type="email"})
+        *@
+        @Html.EditorFor(model => model.Email, null, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Firstname)
+        @Html.EditorFor(model => model.Firstname, null, new { htmlAttributes = new { @class = "form-control", placeholder = "John"} })
+        @Html.ValidationMessageFor(model => model.Firstname, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Lastname)
+        @Html.EditorFor(model => model.Lastname, null, new { htmlAttributes = new { @class = "form-control", placeholder = "Smith"}})
+        @Html.ValidationMessageFor(model => model.Lastname, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.PhoneNumber)
+        @Html.EditorFor(model => model.PhoneNumber, null,new { htmlAttributes = new { @class = "form-control"}})
+        @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @{
+            var selectListItems = (IEnumerable<SelectListItem>)ViewData["PersonRoles"];
+        }
+
+        @Html.LabelFor(model => model.PersonRoleId)
+        @Html.DropDownListFor(model => model.PersonRoleId, selectListItems, new { @class = "form-select" })
+        @Html.ValidationMessageFor(model => model.PersonRoleId, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.NbGuest)
+        @Html.EditorFor(model => model.NbGuest, null, new { htmlAttributes = new { @class = "form-control"} })
+        @Html.ValidationMessageFor(model => model.NbGuest, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.SpamOk)
+        @Html.CheckBoxFor(model => model.SpamOk, new { @class = "form-check-input" } )
+        @Html.ValidationMessageFor(model => model.SpamOk, null, new { @class = "text-danger" })
+    </div>
+
+    <div>
+        <button type="submit">Envoyer le formulaire</button>
+    </div>
+}
