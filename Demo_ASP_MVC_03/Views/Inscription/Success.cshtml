@@ -2,17 +2,20 @@
 <h1>Inscription validé !</h1>
 <p>Merci @TempData["Name"] 🐱‍💻</p>
 
+<div class="btn-group">
+    @* Lien vers la page « Home » avec une balise généré via un HTML Helper *@
+    @Html.ActionLink("Retourner à la page d'accueil", "Index", "Home", null, new { @class = "btn btn-dark"} )
 
-@* Lien vers la page « Home » en HTML Helper *@
-@Html.ActionLink("Retourner à la page d'accueil", "Index", "Home", null, new { @class = "btn btn-warning"} )
+    @* Lien vers la page « Home » avec une balise "a" et le lien généré via un HTML Helper *@
+    <a class="btn btn-warning" href="@Url.ActionLink("Index", "Home")">Retourner à la page d'accueil</a>
 
-<br />
-
-@* Lien vers la page « Home » en Tag Helper *@
-<a class="btn btn-danger" asp-controller="Home" asp-action="Index">Retourner à la page d'accueil</a>
+    @* Lien vers la page « Home » en Tag Helper *@
+    <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Retourner à la page d'accueil</a>
+</div>
 
 
 @************************************************************************************************************@
+<br />
 
 @{
     string test = "<h2>Test</h2>";
